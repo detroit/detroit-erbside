@@ -1,0 +1,70 @@
+detroit-erbside(5) - render inline source code templates
+========================================================
+
+## DESCRIPTION
+
+The DNote plug-in for Detroit utilize the Erbside command line tool
+to render inline templates in source code files.
+
+
+## OPTIONS
+
+The following options can be used in the Detroit assembly file
+for defining an Erbside service.
+
+  * `path` - File paths to render. Default is `lib`.
+
+  * `exclude` - Exclude subpaths of `path`.
+
+  * `ignore` - Ignore subpaths of `path` based on basename of path.
+
+  * `resource` - Resource file(s) to gather metadata from.
+
+  * `prompt` -  Prompt before writing each file.
+
+
+## EXAMPLES
+
+The most common use by the author is for inserting version number
+into code. Say you have the file, `lib/myapp/version.rb`.
+
+    module MyApp
+      VERSION = "1.0.0" #:erb: VERSION = "<%= version %>"
+    end
+
+The in the assembly file:
+
+    erbside:
+      path: lib/myapp/version.rb
+      resource: .ruby
+
+Of course, by default the path is `lib` and the resource is `.ruby`
+if present. So a simple:
+
+    erbside:
+      active: true
+
+Will likely do the trick.
+
+
+## RESOURCES
+
+For more information:
+
+  * [API Reference](http://rubydoc.info/gems/detroit-erbside)
+
+  * [Development Site](http://github.com/detroit/detroit-erbside)
+
+  * [Detroit Project](http://detroit.github.com)
+
+
+## COPYRIGHT
+
+Copyright (c) 2011 Thomas Sawyer, Rubyworks
+
+Detroit Erbside is distributable in accordance with the GPLv3 license.
+
+
+## SEE ALSO
+
+detroit(1), erbside(1)
