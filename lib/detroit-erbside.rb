@@ -23,11 +23,19 @@ module Detroit
     attr_accessor :prompt
 
 
-    #  A S S E M B L Y  S T A T I O N S
+    #  A S S E M B L Y
 
-    #
-    def station_generate
-      generate
+    def assemble?(station, options={})
+      case station
+      when :generate then true
+      end
+    end
+
+    # Attach to `generate` station.
+    def assemble(station, options={})
+      case station
+      when :generate then generate
+      end
     end
 
     #  S E R V I C E  M E T H O D S
