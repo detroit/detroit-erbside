@@ -8,12 +8,11 @@ copyrights:
 - holder: Rubyworks
   year: '2011'
   license: GPL3
-replacements: []
-alternatives: []
 requirements:
 - name: erbside
 - name: detroit
 dependencies: []
+alternatives: []
 conflicts: []
 repositories: []
 resources:
@@ -26,7 +25,8 @@ load_path:
 revision: 0
 summary: Erbside plugin for Detroit
 title: Detroit Erbside
-version: 0.1.0
+version: 0.2.0
 name: detroit-erbside
 description: Erbside plugin for Detroit build system. Render inline source code templates.
-date: '2011-10-27'
+date: '2012-04-01'
+organization: rubyworks
