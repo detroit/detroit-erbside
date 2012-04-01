@@ -23,10 +23,12 @@ extra: {}
 load_path:
 - lib
 revision: 0
+created: '2011-10-16'
 summary: Erbside plugin for Detroit
 title: Detroit Erbside
 version: 0.2.0
 name: detroit-erbside
+suite: detroit
 description: Erbside plugin for Detroit build system. Render inline source code templates.
-date: '2012-04-01'
 organization: rubyworks
+date: '2012-04-01'
