@@ -1,8 +1,8 @@
 # Detroit Erbside Tool
 
-[Website](http://rubyworks.github.com/detroit-erbside] /
-[Report Issue](http://github.com/rubyworks/detroit-erbside/issues] /
-[Source Code](http://github.com/rubyworks/detroit-erbside]
+[Website](http://rubyworks.github.com/detroit-erbside) /
+[Report Issue](http://github.com/rubyworks/detroit-erbside/issues) /
+[Source Code](http://github.com/rubyworks/detroit-erbside)
 
 [![Build Status](https://secure.travis-ci.org/rubyworks/detroit-erbside.png)](http://travis-ci.org/rubyworks/detroit-erbside) 
 [![Gem Version](https://badge.fury.io/rb/detroit-erbside.png)](http://badge.fury.io/rb/detroit-erbside) &nbsp; &nbsp;
