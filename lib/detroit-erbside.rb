@@ -1,11 +1,11 @@
-require 'detroit/tool'
+require 'detroit-standard'
 
 module Detroit
 
   #
   class Erbside < Tool
 
-    #  A T T R I B U T E S
+    system :standard
 
     # Paths of lifes to render.
     attr_accessor :path
@@ -22,9 +22,19 @@ module Detroit
     # Prompt on each write.
     attr_accessor :prompt
 
+    # Render templates.
+    def generate
+      options = {}
+      options[:prompt]  = prompt
+      options[:exclude] = exclude
+      options[:ignore]  = ignore
 
-    #  A S S E M B L Y
+      ::Erbside::Runner.new(path, options).render
+    end
 
+    #  A S S E M B L Y  M E T H O D S
+
+    #
     def assemble?(station, options={})
       case station
       when :generate then true
@@ -36,18 +46,6 @@ module Detroit
       case station
       when :generate then generate
       end
-    end
-
-    #  S E R V I C E  M E T H O D S
-
-    # Render templates.
-    def generate
-      options = {}
-      options[:prompt]  = prompt
-      options[:exclude] = exclude
-      options[:ignore]  = ignore
-
-      ::Erbside::Runner.new(path, options).render
     end
 
   private
