@@ -1,0 +1,44 @@
+---
+revision: 2013
+type: ruby
+sources:
+- var
+authors:
+- name: 7rans
+  email: transfire@gmail.com
+organizations:
+- name: Rubyworks
+requirements:
+- version: 0.3.0+
+  name: detroit
+- name: erbside
+conflicts: []
+alternatives: []
+resources:
+- type: home
+  uri: http://detroit.github.com
+  label: Homepage
+- type: code
+  uri: http://github.com/detroit/detroit-erbside
+  label: Source Code
+- type: mail
+  uri: http://groups.google.com/group/rubyworks-mailinglist
+  label: Mailing List
+repositories: []
+categories: []
+copyrights:
+- holder: Rubyworks
+  year: '2011'
+  license: GPL3
+customs: []
+paths:
+  lib:
+  - lib
+created: '2011-10-16'
+summary: Erbside plugin for Detroit
+title: Detroit Erbside
+version: 0.2.1
+name: detroit-erbside
+suite: detroit
+description: Erbside plugin for Detroit build system. Render inline source code templates.
+date: '2013-03-17'

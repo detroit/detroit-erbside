@@ -1,6 +1,5 @@
 #!mast .ruby bin lib man qed test [A-Z]*.*
-.ruby
 lib/detroit-erbside.rb
 man/detroit-erbside.5.ronn
-README.rdoc
-COPYING.rdoc
+COPYING.md
+README.md
