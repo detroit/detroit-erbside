@@ -9,8 +9,8 @@ to render inline templates in source code files.
 
 ## OPTIONS
 
-The following options can be used in the Detroit assembly file
-for defining an Erbside service.
+The following options can be used in the Detroit toolchain file
+for defining an Erbside tool.
 
   * `path` - File paths to render. Default is `lib`.
 
@@ -25,20 +25,20 @@ for defining an Erbside service.
 
 ## EXAMPLES
 
-The most common use by the author is for inserting version number
-into code. Say you have the file, `lib/myapp/version.rb`.
+A common use by the author of this plugin is for insertion of version
+number into source code. Say we have the file, `lib/myapp/version.rb`.
 
     module MyApp
       VERSION = "1.0.0" #:erb: VERSION = "<%= version %>"
     end
 
-The in the assembly file:
+Then in the toolchain file:
 
     erbside:
       path: lib/myapp/version.rb
-      resource: .ruby
+      resource: .index
 
-Of course, by default the path is `lib` and the resource is `.ruby`
+Of course, by default the path is `lib` and the resource is `.index`
 if present. So a simple:
 
     erbside:

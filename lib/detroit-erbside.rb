@@ -2,10 +2,38 @@ require 'detroit-standard'
 
 module Detroit
 
+  ##
+  # Erbside tool is an inline templating tool for source code.
+  # It can be useful for keeping information uptodate that is 
+  # static in code, but dynamic to the project itself. A good
+  # example a `VERSION` constant.
+  #
+  #     module MyApp
+  #       VERSION = "1.2.0"  #:erb: VERSION = "<%= version %>"
+  #       ...
   #
   class Erbside < Tool
 
-    system :standard
+    # Designed to work with the standard assembly. This tool
+    # attaches to `generate` station.
+    #
+    # @!parse
+    #   include Standard
+    #
+    assembly Standard
+
+    # Loction of manpage for tool.
+    MANPAGE = File.dirname(__FILE__) + '/../man/detroit-erbside.5'
+
+    # Load requirements and set attribute defaults.
+    #
+    # @return [void]
+    def prerequisite
+      require 'erbside'
+      require 'shellwords'
+
+      @path = 'lib'
+    end
 
     # Paths of lifes to render.
     attr_accessor :path
@@ -22,55 +50,47 @@ module Detroit
     # Prompt on each write.
     attr_accessor :prompt
 
+    # Metadata resources, default is project metadata.
+    attr_accessor :resources
+
+    # Alias for resources.
+    alias_accessor :resource, :resources
+
     # Render templates.
     def generate
       options = {}
-      options[:prompt]  = prompt
-      options[:exclude] = exclude
-      options[:ignore]  = ignore
+      options[:prompt]    = prompt
+      options[:exclude]   = exclude
+      options[:ignore]    = ignore
+      options[:resources] = resources || metadata
 
       ::Erbside::Runner.new(path, options).render
     end
 
-    #  A S S E M B L Y  M E T H O D S
-
+    # This tool ties into the `generate` station of the standard
+    # assembly.
     #
+    # @return [Boolean]
     def assemble?(station, options={})
-      case station
-      when :generate then true
-      end
-    end
-
-    # Attach to `generate` station.
-    def assemble(station, options={})
-      case station
-      when :generate then generate
-      end
+      return true if station == :generate
     end
 
   private
+
+    # If project metadata responds to `#to_h` then we can us it.
+    def metadata
+      data = super
+      if data.respond_to?(:to_h)
+        data.to_h
+      else
+        nil
+      end
+    end
 
     #
     #def files
     #  amass(path, exclude, ignore)
     #end
-
-    #
-    def initialize_requires
-      require 'erbside'
-      require 'shellwords'
-    end
-
-    #
-    def initialize_defaults
-      @path = 'lib'
-    end
-
-  public
-
-    def self.man_page
-      File.dirname(__FILE__)+'/../man/detroit-erbside.5'
-    end
 
   end
 
